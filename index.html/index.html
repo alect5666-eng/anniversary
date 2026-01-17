@@ -94,6 +94,7 @@ function startApp() {
   box.innerHTML = `
     <h1>Happy Anniversary, ${name} 🤍</h1>
     <div class="heart">❤️</div>
+
     <p>
       Happy Anniversary 1 Month 🤍<br><br>
       ເຖິງ 1 ເດືອນອາດຈະບໍ່ດົນປານໃດ<br>
@@ -101,16 +102,20 @@ function startApp() {
       ທຸກມື້ຂອງເພີ່ນມີຄວາມໝາຍ 💖<br><br>
       ຂໍໃຫ້ເຮົາຮັກກັນແບບນີ້ໄປດົນໆ ❤️
     </p>
-    <p style="font-size:13px;color:#888;">
-      (ຖ້າເປີດໃນ Messenger / WhatsApp<br>
-      ແນະນຳ Open in Browser 💕)
-    </p>
+
+    <iframe
+      src="https://open.spotify.com/embed/track/3vkCueOmm7xQDoJ17W1Pm3?utm_source=generator&theme=0"
+      width="100%"
+      height="80"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
   `;
 
   startHearts();
 }
 
-/* รองรับทั้ง click และ touch (สำคัญมากสำหรับ in-app browser) */
+/* รองรับทั้ง click และ touch (สำคัญมากสำหรับ Messenger / WhatsApp) */
 var btn = document.getElementById("startBtn");
 btn.addEventListener("click", startApp);
 btn.addEventListener("touchstart", startApp);
