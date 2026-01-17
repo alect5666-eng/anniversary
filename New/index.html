@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Anniversary</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #ffe6eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
+
+.box {
+  background: #fff0f5;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  z-index: 2;
+}
+
+h1 { color: #ff4d6d; }
+
+input {
+  padding: 10px;
+  width: 80%;
+  border-radius: 8px;
+  border: 1px solid #ff4d6d;
+}
+
+button {
+  margin-top: 15px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 25px;
+  background: #ff4d6d;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.heart {
+  font-size: 80px;
+  margin: 15px 0;
+}
+
+p {
+  line-height: 1.6;
+  color: #444;
+}
+
+.floating-heart {
+  position: fixed;
+  bottom: -30px;
+  animation: floatUp linear forwards;
+  color: #ff4d6d;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="box" id="box">
+  <h1>Enter Your Name</h1>
+  <input type="text" id="namaeInput" value="Nouna">
+  <br><br>
+  <button id="startBtn">Start 💖</button>
+</div>
+
+<script>
+function startApp() {
+  var input = document.getElementById("namaeInput");
+  var name = input && input.value ? input.value : "My Love";
+
+  var box = document.getElementById("box");
+  box.innerHTML = `
+    <h1>Happy Anniversary, ${name} 🤍</h1>
+    <div class="heart">❤️</div>
+    <p>
+      Happy Anniversary 1 Month 🤍<br><br>
+      ເຖິງ 1 ເດືອນອາດຈະບໍ່ດົນປານໃດ<br>
+      ແຕ່ຂອບໃຈທີ່ເຈົ້າເຂົ້າມາເຮັດໃຫ້<br>
+      ທຸກມື້ຂອງເພີ່ນມີຄວາມໝາຍ 💖<br><br>
+      ຂໍໃຫ້ເຮົາຮັກກັນແບບນີ້ໄປດົນໆ ❤️
+    </p>
+    <p style="font-size:13px;color:#888;">
+      (ຖ້າເປີດໃນ Messenger / WhatsApp<br>
+      ແນະນຳ Open in Browser 💕)
+    </p>
+  `;
+
+  startHearts();
+}
+
+/* รองรับทั้ง click และ touch (สำคัญมากสำหรับ in-app browser) */
+var btn = document.getElementById("startBtn");
+btn.addEventListener("click", startApp);
+btn.addEventListener("touchstart", startApp);
+
+function startHearts() {
+  setInterval(function () {
+    var heart = document.createElement("div");
+    heart.className = "floating-heart";
+    heart.textContent = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (14 + Math.random() * 30) + "px";
+    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+    document.body.appendChild(heart);
+    setTimeout(function () {
+      heart.remove();
+    }, 9000);
+  }, 600);
+}
+</script>
+
+</body>
+</html>
